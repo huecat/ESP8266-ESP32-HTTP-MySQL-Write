@@ -1,9 +1,10 @@
 <? php
 
 /*
-  HUE CAT 2020
+  HUE CAT 2023
   www.huecat.es
-  Conectar ESP32/ESP8266 con una Base de Datos MySQL
+  Conectar ESP32/ESP8266 con una Base de Datos MySQL ** ENGLISH BELOW
+  Este Script muestra cómo guardar un dato en una DB MYSQL que llega desde un microcontrolador (o cualquier ventana web)
 */
 
 $srvName = "localhost"; //Nombre del servidor
@@ -24,8 +25,7 @@ $nameSensor = "PIR";
 $loc = "Madrid";
 
 
-//////////////////// MODO PRUEBA: CAMBIAR GET POR POST ANTES DE USAR ARDUINO !! !!! !!!! !!! !! !
-
+//////////////////// MODO PRUEBA: CAMBIAR GET POR POST POR MAYOR SEGURIDAD
 if ($_SERVER["REQUEST_METHOD"] == "GET") { //Si ha "entrado" algo
 
   $apiKeyRcv = test_input($_GET["api_key"]);
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") { //Si ha "entrado" algo
       die("Connection failed: " . $conexion->connect_error);
     }
 
-    $sql = "INSERT INTO lectura_sensor (id_sensor, nombre_sensor,    lugar)
+    $sql = "INSERT INTO lectura_sensor (id_sensor, nombre_sensor, lugar)
            VALUES ( '". $idSensor . "','". $nameSensor . "','". $loc . "')";
 
     if ($conexion->query($sql) == = TRUE) {
